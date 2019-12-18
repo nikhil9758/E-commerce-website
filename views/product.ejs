@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+   <!-- Required meta tags -->
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://via.placeholder.com/16/007bff/007bff" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+ 
+ <%- include ('../views/partials/header') %>
+
+	
+<section>
+<div class="container ">
+  <h2 class="bg-primary text-white text-center text-capitalize">Welcome to my shop all products are available here </h2> 
+    
+   <%- include ('../views/partials/carousel') %>
+ 
+</div>
+</section>
+<section >
+  <div class="container">
+    <h2>Products list</h2>
+    
+    <div class="row">
+    <% products.forEach(function(product){ %>
+      <div class="col-md-3 container-fluid ">
+		
+		
+	   <div class="card rounded-0" style="margin-bottom: 40px;" >
+  <div class="card-body" style="border: 2px solid black" style="box-sizing: border-box;">
+    
+      <img  alt="Card image" style="width:100%" class="img-fluid" src="<%= product.picture %>" />
+      <h4 class="card-title"><%= product.title %></h4>
+    
+    <span class="badge badge-warning"><%= product.name %></span>
+    <p class="card-text">Price: ₹<%= product.price %></p>
+    
+      <p class="card-text"><%= product.details %></p>
+   
+    <a href="/add-to-cart/pid-<%= product.pid %>" class="card-link"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</a>
+  </div>
+</div>
+
+      </div>
+    <% }); %>
+    </div>
+  </div>
+  
+  <%- include ('../views/partials/fotter') %>
+</section> 
+
+</body>
+</html>
